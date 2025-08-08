@@ -1,0 +1,18 @@
+Insights for Project2-Q1
+
+Here are some insights you can draw from the "Key Features distributions by attrition" visualization:
+
+Age: Employees who left ("Yes") tend to be younger compared to those who stayed ("No"). The attrition group has a higher frequency in the lower age range.
+
+MonthlyIncome: Employees with lower monthly income are more likely to leave. The "Yes" group is concentrated at the lower end of the income scale.
+
+DistanceFromHome: Employees who live farther from work show a slightly higher attrition, but the effect is not very strong.
+
+YearsAtCompany and TotalWorkingYears: Employees with fewer years at the company or less total working experience are more likely to leave.
+
+JobSatisfaction and WorkLifeBalance: Lower job satisfaction and work-life balance scores are associated with higher attrition.
+
+PerformanceRating: There is little variation in performance rating, so it does not appear to be a strong differentiator for attrition in this dataset.
+
+Summary:
+Attrition is higher among younger, less experienced, lower-paid employees, and those with lower job satisfaction and work-life balance. These are key areas to focus on for retention strategies.
