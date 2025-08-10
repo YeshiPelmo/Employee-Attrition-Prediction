@@ -242,7 +242,7 @@ with tab2:
     st.write(f"**Optimal k value:** {optimal_k}")
     st.write(f"**Best validation accuracy:** {val_mean[optimal_k_idx]:.4f}")
 
-    fig = plt.figure(figsize=(6, 4))
+    fig = plt.figure(figsize=(4, 3))  # Decreased size for compact display
     plt.plot(k_range, train_mean, 'o-', color='blue', label='Training Accuracy')
     plt.fill_between(k_range, train_mean - train_std, train_mean + train_std, alpha=0.1, color='blue')
     plt.plot(k_range, val_mean, 'o-', color='red', label='Validation Accuracy')
