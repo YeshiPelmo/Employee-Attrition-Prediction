@@ -167,7 +167,7 @@ with tab2:
     st.write(df.head(50))
     
     # Visualization 1: Key Features Distributions by Attrition
-   
+    st.subheader("📊 Key Features Distributions by Attrition")   
     plt.clf()
     fig1 = plt.figure(figsize=(12, 5))  # More compact and balanced for Streamlit
     key_features = ['Age', 'MonthlyIncome', 'DistanceFromHome', 'YearsAtCompany', 'TotalWorkingYears','JobSatisfaction', 'WorkLifeBalance', 'PerformanceRating']
@@ -178,7 +178,6 @@ with tab2:
             plt.hist(data, alpha=0.7, label=attrition, bins=20)
         plt.xlabel(feature, fontsize=10)
         plt.ylabel('Frequency', fontsize=10)
-        plt.title(f'{feature} Distribution by Attrition', fontsize=11)
         plt.legend(fontsize=8)
         plt.xticks(fontsize=8)
         plt.yticks(fontsize=8)
