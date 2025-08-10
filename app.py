@@ -262,8 +262,8 @@ with tab2:
     distance_scores = {}
 
     for metric in distance_metrics:
-        knn = KNeighborsClassifier(n_neighbors=optimal_k, metric=metric)
-        scores = cross_val_score(knn, X_train_scaled, y_train, cv=5, scoring='accuracy')
+        knn = KNeighborsClassifier(n_neighbors=optimal_k, metric=metric, n_jobs=1)
+        scores = cross_val_score(knn, X_train_scaled, y_train, cv=5, scoring='accuracy', n_jobs=1)
         distance_scores[metric] = scores.mean()
         st.write(f"Distance metric '{metric}': CV Accuracy = {scores.mean():.4f}")
 
@@ -279,15 +279,15 @@ with tab3:
         'Logistic Regression': LogisticRegression(random_state=42, max_iter=1000),
         'Naive Bayes': GaussianNB(),
         'Decision Tree': DecisionTreeClassifier(random_state=42),
-        'Random Forest': RandomForestClassifier(random_state=42, n_estimators=100),
+        'Random Forest': RandomForestClassifier(random_state=42, n_estimators=100, n_jobs=1),
         'SVM (Linear)': SVC(kernel='linear', random_state=42),
         'SVM (RBF)': SVC(kernel='rbf', random_state=42),
         'SVM (Polynomial)': SVC(kernel='poly', degree=3, random_state=42),
         'SVM (Sigmoid)': SVC(kernel='sigmoid', random_state=42),
         'SVM (RBF-Tuned)': SVC(kernel='rbf', C=10, gamma='scale', random_state=42),
-        'K-Nearest Neighbors (Default)': KNeighborsClassifier(n_neighbors=5),
+        'K-Nearest Neighbors (Default)': KNeighborsClassifier(n_neighbors=5, n_jobs=1),
         f'K-Nearest Neighbors (Optimal k={optimal_k})': KNeighborsClassifier(
-            n_neighbors=optimal_k, metric=best_metric
+            n_neighbors=optimal_k, metric=best_metric, n_jobs=1
         )
     }
     for name, model in models.items():
@@ -327,7 +327,7 @@ with tab3:
         cv_folds = 5
         kfold = StratifiedKFold(n_splits=cv_folds, shuffle=True, random_state=42)
         for name, model in models.items():
-            scores = cross_val_score(model, X_train_scaled, y_train, cv=kfold, scoring='accuracy')
+            scores = cross_val_score(model, X_train_scaled, y_train, cv=kfold, scoring='accuracy', n_jobs=1)
             cv_scores[name] = scores
         fig = plt.figure(figsize=(10, 5))  # Consistent figure size
         model_names = list(cv_scores.keys())
