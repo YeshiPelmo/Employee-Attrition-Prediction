@@ -168,20 +168,21 @@ with tab2:
     
     # Visualization 1: Key Features Distributions by Attrition
    
-    fig1 = plt.figure(figsize=(16, 6))  
+    plt.clf()
+    fig1 = plt.figure(figsize=(12, 5))  # More compact and balanced for Streamlit
     key_features = ['Age', 'MonthlyIncome', 'DistanceFromHome', 'YearsAtCompany', 'TotalWorkingYears','JobSatisfaction', 'WorkLifeBalance', 'PerformanceRating']
     for i, feature in enumerate(key_features):
         plt.subplot(2, 4, i+1)
         for attrition in df['Attrition'].unique():
             data = df[df['Attrition'] == attrition][feature]
             plt.hist(data, alpha=0.7, label=attrition, bins=20)
-        plt.xlabel(feature, fontsize=12)
-        plt.ylabel('Frequency', fontsize=12)
-        plt.title(f'{feature} Distribution by Attrition', fontsize=13)
-        plt.legend(fontsize=10)
-        plt.xticks(fontsize=10)
-        plt.yticks(fontsize=10)
-    plt.tight_layout()
+        plt.xlabel(feature, fontsize=10)
+        plt.ylabel('Frequency', fontsize=10)
+        plt.title(f'{feature} Distribution by Attrition', fontsize=11)
+        plt.legend(fontsize=8)
+        plt.xticks(fontsize=8)
+        plt.yticks(fontsize=8)
+    plt.tight_layout(pad=1.0)
     st.pyplot(fig1)
 
     # Preprocessing
